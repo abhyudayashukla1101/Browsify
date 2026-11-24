@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Structures: Singly & Doubly Linked Lists | EduCode Academy</title>
+  <meta name="description" content="Master linked list data structures, node pointers, insertion, deletion, and time complexity with interactive code examples and diagrams.">
+  <meta property="og:title" content="Data Structures: Singly & Doubly Linked Lists">
+  <meta property="og:type" content="article">
+
+  <!-- JSON-LD Structured Data for Browsify Education Agent -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Course",
+    "name": "Data Structures & Algorithms in Computer Science",
+    "description": "Comprehensive tutorial on Linked Lists, Node structures, Pointer operations, and traversal algorithms.",
+    "provider": {
+      "@type": "Organization",
+      "name": "EduCode Academy"
+    },
+    "about": [
+      "Data Structures",
+      "Linked Lists",
+      "Pointers",
+      "Computer Science"
+    ]
+  }
+  </script>
+
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif; background: #ffffff; color: #111827; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    header { background: #ffffff; border-bottom: 1px solid #e5e7eb; color: #111827; padding: 16px 32px; display: flex; justify-content: space-between; align-items: center; }
+    .brand { font-size: 16px; font-weight: 700; color: #09090b; letter-spacing: -0.02em; }
+    .container { max-width: 840px; margin: 0 auto; padding: 32px 24px 80px; }
+    .agent-hint-banner { margin-bottom: 28px; background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px 18px; display: flex; align-items: center; justify-content: space-between; }
+    .badge { display: inline-block; background: #f3f4f6; color: #374151; padding: 3px 10px; border-radius: 999px; font-size: 11px; font-weight: 500; margin-bottom: 12px; border: 1px solid #e5e7eb; }
+    h1 { font-size: 32px; font-weight: 700; color: #09090b; margin-bottom: 16px; line-height: 1.25; letter-spacing: -0.02em; }
+    h2 { font-size: 20px; font-weight: 600; color: #09090b; margin: 32px 0 14px; border-bottom: 1px solid #f3f4f6; padding-bottom: 8px; }
+    p { margin-bottom: 18px; color: #374151; font-size: 15px; }
+    .diagram-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 24px; margin: 24px 0; text-align: center; }
+    .node-chain { display: flex; align-items: center; justify-content: center; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+    .node { background: white; border: 1px solid #d1d5db; border-radius: 6px; padding: 8px 16px; font-weight: 600; font-size: 13px; color: #111827; }
+    .arrow { font-size: 16px; color: #6b7280; font-weight: 600; }
+    pre { background: #09090b; color: #f8fafc; padding: 16px; border-radius: 8px; overflow-x: auto; font-size: 13px; margin: 20px 0; font-family: monospace; }
+    table { width: 100%; border-collapse: collapse; margin: 24px 0; font-size: 13px; }
+    th, td { border: 1px solid #e5e7eb; padding: 10px 14px; text-align: left; }
+    th { background: #f9fafb; font-weight: 600; color: #374151; }
+    .checklist { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 8px; padding: 16px 20px; margin: 20px 0; list-style: none; }
+    .checklist li { margin-bottom: 6px; color: #4b5563; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="brand">EduCode Academy</div>
+    <div style="font-size: 13px; color: #6b7280;">Computer Science Curriculum</div>
+  </header>
+
+  <div class="container">
+    <div class="agent-hint-banner">
+      <div style="font-size: 13px; color: #374151;">
+        <strong>Demo Note:</strong> Open the <strong>Browsify Sidepanel</strong>! It will recognise this educational topic (Linked Lists), update your course roadmap, and prepare revision quiz questions.
+      </div>
+      <span style="font-size: 11px; background: #ffffff; border: 1px solid #e5e7eb; color: #111827; padding: 3px 8px; border-radius: 6px; font-weight: 500;">Learning Intent</span>
+    </div>
+
+    <span class="badge">Data Structures</span>
+    <h1 id="topic-title">Mastering Singly & Doubly Linked Lists</h1>
+    <p>A <strong>Linked List</strong> is a linear collection of data elements whose order is not determined by their physical placement in memory. Instead, each node points to the next using a reference pointer.</p>
+
+    <h2>1. The Structure of a Node</h2>
+    <p>Unlike contiguous arrays, linked lists allocate memory dynamically on the heap. A basic singly linked list node contains two components:</p>
+    <ul class="checklist">
+      <li>• <strong>Data field</strong>: Holds the payload or primitive value.</li>
+      <li>• <strong>Next pointer</strong>: A reference pointing to the memory address of the subsequent node.</li>
+    </ul>
+
+    <div class="diagram-box">
+      <div style="font-size: 12px; font-weight: 600; color: #6b7280; margin-bottom: 8px;">Node Memory Representation</div>
+      <div class="node-chain">
+        <div class="node">[Head: 10]</div>
+        <div class="arrow">→</div>
+        <div class="node">[Data: 25]</div>
+        <div class="arrow">→</div>
+        <div class="node">[Data: 42]</div>
+        <div class="arrow">→</div>
+        <div class="node">[Data: 99 | NULL]</div>
+      </div>
+    </div>
+
+    <h2>2. Time & Space Complexity</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Operation</th>
+          <th>Array</th>
+          <th>Singly Linked List</th>
+          <th>Doubly Linked List</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Access / Search</strong></td>
+          <td>O(1) random access</td>
+          <td>O(N) linear traversal</td>
+          <td>O(N) linear traversal</td>
+        </tr>
+        <tr>
+          <td><strong>Insert at Beginning</strong></td>
+          <td>O(N) shifting</td>
+          <td>O(1) instant update</td>
+          <td>O(1) instant update</td>
+        </tr>
+        <tr>
+          <td><strong>Insert at End</strong></td>
+          <td>O(1) amortized</td>
+          <td>O(1) with tail</td>
+          <td>O(1) with tail</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h2>3. Implementation</h2>
+    <pre><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        self.head = None
+
+    def prepend(self, data):
+        new_node = Node(data)
+        new_node.next = self.head
+        self.head = new_node</code></pre>
+  </div>
+</body>
+</html>

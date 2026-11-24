@@ -1,0 +1,16 @@
+{
+  "name": "browserpilot-extension",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "BrowserPilot Chrome Extension - Universal Proactive AI Browser Agent",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^6.0.0"
+  }
+}
